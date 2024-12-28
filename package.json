@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+"
+    "url": "git+https://github.com/ubyjerome/Catoff-Web2-Gaming-Integration.git"
   },
   "author": "dhelafrank",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/ubyjerome/Catoff-Web2-Gaming-Integration"
   },
-  "homepage": "",
+  "homepage": "https://github.com/ubyjerome/Catoff-Web2-Gaming-Integration#readme",
   "dependencies": {
     "autoprefixer": "^10.4.20",
     "cloudinary": "^2.5.1",

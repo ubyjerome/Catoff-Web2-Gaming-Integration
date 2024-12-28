@@ -7,9 +7,9 @@ export const header = (walletConnection?: boolean) => {
       <nav class="border-b border-zinc-800">
         <div class="container mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <span class="text-primary font-bold text-xl text-decor-two">${
+                <span class="text-primary font-bold text-xl text-decor-two"><a href="/">${
                   Configs.organisation.name
-                }</span>
+                }</a></span>
             </div>
             <div class="flex items-center gap-4">
                 <a href="/games" class="text-zinc-400 hover:text-white transition-colors">Games</a>
