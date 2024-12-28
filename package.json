@@ -1,0 +1,51 @@
+{
+  "name": "Catoff-Web2-Gaming-Integration",
+  "version": "1.0.0",
+  "description": "Catoff Web2 Gaming Integration",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node ./dist/app.js",
+    "dev": "npx nodemon",
+    "tailwind:css": "npx postcss ./core/public/stylesheets/tailwind.css -o ./dist/public/stylesheets/style.css",
+    "load:ejs": "ts-node copy-assets.ts",
+    "build": "rm -rf ./dist && rm -rf ./logs && npm run tailwind:css && npx tsc && npm run load:ejs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+"
+  },
+  "author": "dhelafrank",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "cloudinary": "^2.5.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "fs-extra": "^11.2.0",
+    "mongoose": "^8.6.3",
+    "morgan": "^1.10.0",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0",
+    "shelljs": "^0.8.5",
+    "ts-node": "^10.9.2",
+    "urlencode": "^2.0.0",
+    "winston": "^3.14.2",
+    "winston-daily-rotate-file": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.9",
+    "@types/shelljs": "^0.8.15",
+    "gulp-copy": "^5.0.0",
+    "nodemon": "^3.1.4",
+    "tailwindcss": "^3.4.12",
+    "typescript": "^5.6.2"
+  }
+}
