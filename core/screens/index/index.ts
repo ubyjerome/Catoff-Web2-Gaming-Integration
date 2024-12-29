@@ -21,10 +21,10 @@ export const homeScreenContent = async () => {
                     Create or join wagers for popular games like Fortnite and League of Legends using
                     cryptocurrencies on the Solana blockchain.
                 </p>
-                <div class="flex gap-4">
-                    <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all flex items-center connect-wallet">
+                <div class="flex gap-4 items-start justify-start flex-wrap">
+                    <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all connect-wallet text-nowrap">
                         Connect Wallet
-                    ${SVGCreditCard("h-5 w-5 ml-2")}
+                        <i class="fa-solid fa-wallet ml-2"></i>
                     </button>
                     <a href="/games" class="border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary/10 transition-all flex items-center">
                         See Games ${SVGForwardArrow("h-5 w-5 ml-2")}
