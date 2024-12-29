@@ -26,9 +26,9 @@ export const homeScreenContent = async () => {
                         Connect Wallet
                     ${SVGCreditCard("h-5 w-5 ml-2")}
                     </button>
-                    <button class="border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary/10 transition-all flex items-center">
-                        <a href="/games">See Games </a>${SVGForwardArrow("h-5 w-5 ml-2")}
-                    </button>
+                    <a href="/games" class="border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary/10 transition-all flex items-center">
+                        See Games ${SVGForwardArrow("h-5 w-5 ml-2")}
+                    </a>
                 </div>
             </div>
             <div class="relative">

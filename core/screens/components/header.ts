@@ -12,12 +12,10 @@ export const header = (walletConnection?: boolean) => {
                   Configs.organisation.name
                 }</a></span>
             </div>
-            <div class="flex items-center gap-4">
-                <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all flex items-center my-4 flex-nowrap connect-wallet">
-                        Connect Wallet
+            <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all connect-wallet text-nowrap flex items-center flex-nowrap">
+                    Connect Wallet
                     ${SVGCreditCard("h-5 w-5 ml-2")}
-                </button>
-            </div>
+            </button>
         </div>
     </nav>
     `;
