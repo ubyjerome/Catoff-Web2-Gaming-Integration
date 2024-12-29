@@ -13,7 +13,6 @@ export const header = (walletConnection?: boolean) => {
                 }</a></span>
             </div>
             <div class="flex items-center gap-4">
-                <a href="/games" class="text-zinc-400 hover:text-white transition-colors">Games</a>
                 <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all flex items-center my-4 flex-nowrap connect-wallet">
                         Connect Wallet
                     ${SVGCreditCard("h-5 w-5 ml-2")}

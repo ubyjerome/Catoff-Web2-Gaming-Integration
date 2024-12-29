@@ -27,8 +27,7 @@ export const homeScreenContent = async () => {
                     ${SVGCreditCard("h-5 w-5 ml-2")}
                     </button>
                     <button class="border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary/10 transition-all flex items-center">
-                        Learn More
-                    ${SVGForwardArrow("h-5 w-5 ml-2")}
+                        <a href="/games">See Games </a>${SVGForwardArrow("h-5 w-5 ml-2")}
                     </button>
                 </div>
             </div>
@@ -83,7 +82,7 @@ export const homeScreenContent = async () => {
             <p class="text-zinc-400 mb-8 text-lg">
                 Join thousands of players already using Wagerly to enhance their gaming experience.
             </p>
-            <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all flex items-center mx-auto">
+            <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all flex items-center mx-auto connect-wallet">
                 Connect Wallet & Start Playing
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
