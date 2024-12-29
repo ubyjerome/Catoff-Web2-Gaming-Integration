@@ -17,13 +17,13 @@ export const homeScreenContent = async () => {
                     <span class="text-primary glow">Web3 P2P</span>
                     <span class="text-white"> Wagering Platform</span>
                 </h1>
-                <p class="text-zinc-400 text-xl">
+                <p class="text-zinc-400 tcenterext-xl">
                     Create or join wagers for popular games like Fortnite and League of Legends using
                     cryptocurrencies on the Solana blockchain.
                 </p>
                 <div class="flex gap-4">
-                    <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all flex items-center">
-                        Sign in with Wallet
+                    <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all flex items-center connect-wallet">
+                        Connect Wallet
                     ${SVGCreditCard("h-5 w-5 ml-2")}
                     </button>
                     <button class="border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary/10 transition-all flex items-center">
@@ -76,7 +76,7 @@ export const homeScreenContent = async () => {
     <!-- CTA Section -->
     <section class="container mx-auto px-4 py-20">
     ${zincCard(`
-        <h2 class="text-3xl font-bold mb-4">
+        <h2 class="text-3xl font-bold mb-4 text-decor-two">
                 <span class="text-white">Ready to </span>
                 <span class="text-primary glow">Start Wagering?</span>
             </h2>
