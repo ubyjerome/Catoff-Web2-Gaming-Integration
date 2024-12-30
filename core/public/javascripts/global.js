@@ -23,12 +23,13 @@ walletConnectionButton.forEach(button => {
                 const response = await window.solana.connect();
                 const publicKey = response.publicKey.toString();
 
-                const connectionResponse = await sendPublicKeyToBackend(publicKey);
-                if (!connectionResponse.status) {
-                    toast(connectionResponse.message, "error")
-                    return
-                }
-                toast(connectionResponse.message, "info")
+                // const connectionResponse = await sendPublicKeyToBackend(publicKey);
+                // if (!connectionResponse.status) {
+                //     toast(connectionResponse.message, "error")
+                //     return
+                // }
+                // toast(connectionResponse.message, "info")
+                
                 walletConnectionButton.forEach(button => {
                     button.setAttribute("wallet-connection", true)
                     button.innerHTML = `Connected: 7C...3F`
