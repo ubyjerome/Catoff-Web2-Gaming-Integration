@@ -7,11 +7,13 @@ import viewRoute from "./api/screens";
 import apiRoutes from "./api";
 import { initializeDatabase } from "./database";
 import logger from "./utils/logger";
+import { initializeWeb3 } from "./modules/web3";
 
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(morgan("dev"));
+app.use(express.json())
 app.use(
   express.urlencoded({
     extended: false,
@@ -31,6 +33,7 @@ app.listen(Configs.project.port, async () => {
   try {
     logger.info(`${Configs.project.name} started on port ${Configs.project.port}`)
     // await initializeDatabase()
+    await initializeWeb3()
     logger.info(
       `${Configs.project.name} Server is now listening on port ${Configs.project.port}`
     ); 

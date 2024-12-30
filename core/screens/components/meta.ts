@@ -74,7 +74,7 @@ export const meta = (
             <link rel="stylesheet" href="/stylesheets/style.css">
             <link rel="stylesheet" href="/stylesheets/global.css">
 
-            <link rel="preload" href="/javascripts/components/headerToggle.js" as="script" type="application/javascript" crossorigin="anonymous">
+
             <link rel="preload" href="https://platform.twitter.com/widgets.js" as="script" type="application/javascript" crossorigin="anonymous">
             <link rel="preload" href="/fonts/KnightWarrior.otf" as="font" type="font/otf" crossorigin="">
             <link rel="preload" href="/fonts/VeniteAdoremusStraight.ttf" as="font" type="font/otf" crossorigin="">

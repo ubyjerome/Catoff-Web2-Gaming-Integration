@@ -1,6 +1,7 @@
 import { IConfigs } from "./types";
-
 require("dotenv").config();
+const solanaPrivateKey = process.env.SOLANA_PRIVATE_KEY || "";
+
 export const Configs: IConfigs = {
   project: {
     port: process.env.PORT,
@@ -14,19 +15,25 @@ export const Configs: IConfigs = {
   organisation: {
     name: process.env.ORGANISATION_NAME,
   },
-  website:{
-    favicon:process.env.FAVICON || "Boiler",
-    themeing:{
-        primaryColor:process.env.COLOR_PRIMARY || "Boiler"
+  website: {
+    favicon: process.env.FAVICON || "Boiler",
+    themeing: {
+      primaryColor: process.env.COLOR_PRIMARY || "Boiler",
     },
-    openGraphTemplateUrl:process.env.OPENGRAPH_TEMPLATE_URL || "Boiler",
-    logo:{
-        primary:process.env.LOGO || "Boiler"
-    }
+    openGraphTemplateUrl: process.env.OPENGRAPH_TEMPLATE_URL || "Boiler",
+    logo: {
+      primary: process.env.LOGO || "Boiler",
+    },
   },
-  cloudinary:{
-    apiKey:process.env.CLOUDINARY_API_KEY || "Boiler",
-    apiSecret:process.env.CLOUDINARY_API_SECRET || "Boiler",
-    cloudName:process.env.CLOUDINARY_API_CLOUDNAME || "Boiler"
-  }
+  cloudinary: {
+    apiKey: process.env.CLOUDINARY_API_KEY || "Boiler",
+    apiSecret: process.env.CLOUDINARY_API_SECRET || "Boiler",
+    cloudName: process.env.CLOUDINARY_API_CLOUDNAME || "Boiler",
+  },
+  web3: {
+    solanaPrivateKey,
+    solanaNetwork: process.env.SOLANA_NETWORK || "devnet",
+    privateKeyArray: Uint8Array.from(solanaPrivateKey.split(',').map(Number)),
+    solanaProgramId:process.env.SOLANA_PROGRAM_ID || "test"
+  },
 };

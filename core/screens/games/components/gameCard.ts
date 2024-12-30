@@ -9,7 +9,7 @@ export const gameCard = (gameName:string, featuredText:string, activeWagers:numb
                     <div class="flex justify-between items-center">
                         <span class="text-primary font-bold">Active Wagers: <span id="fortniteWagers">${activeWagers}</span></span>
                         <button class="bg-primary text-black px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all">
-                            Create Wager
+                            Create Wager <i class="fa-solid fa-gamepad ml-2"></i>
                         </button>
                     </div>
                 </div>

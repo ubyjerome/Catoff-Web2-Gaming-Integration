@@ -41,7 +41,7 @@ function populateWagers() {
 document.querySelectorAll('button').forEach(button => {
     if (button.textContent.trim() === 'Create Wager') {
         button.addEventListener('click', () => {
-            alert(`Please connect your wallet`);
+            window.location.href="/wager/create"
         });
     }
 });

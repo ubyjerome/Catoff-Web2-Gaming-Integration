@@ -24,5 +24,11 @@ export interface IConfigs {
     apiKey:string,
     apiSecret:string,
     cloudName:string
+  },
+  web3:{
+    solanaPrivateKey:string,
+    solanaNetwork: string,
+    privateKeyArray: any,
+    solanaProgramId:string
   }
 }

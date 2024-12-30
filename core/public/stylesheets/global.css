@@ -93,3 +93,8 @@ body::-webkit-scrollbar-button {
 .text-decor-two{
     font-family: var(--font-decor-two);
 }
+.bg-image {
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+}

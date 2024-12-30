@@ -22,7 +22,7 @@ export const homeScreenContent = async () => {
                     cryptocurrencies on the Solana blockchain.
                 </p>
                 <div class="flex gap-4 items-start justify-start flex-wrap">
-                    <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all connect-wallet text-nowrap">
+                    <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all connect-wallet text-nowrap" wallet-connection="false">
                         Connect Wallet
                         <i class="fa-solid fa-wallet ml-2"></i>
                     </button>
@@ -82,12 +82,11 @@ export const homeScreenContent = async () => {
             <p class="text-zinc-400 mb-8 text-lg">
                 Join thousands of players already using Wagerly to enhance their gaming experience.
             </p>
-            <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all flex items-center mx-auto connect-wallet">
-                Connect Wallet & Start Playing
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
+        
+
+            <a href="/wager/create" class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all text-nowrap" wallet-connection="false">
+                Create Wager <i class="fa-solid fa-gamepad ml-2"></i>
+            </a>
     `,'rounded-2xl p-12 text-center max-w-4xl mx-auto','data-aos="fade-up"')}
     </section>
     

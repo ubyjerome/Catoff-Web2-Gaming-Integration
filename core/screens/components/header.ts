@@ -12,7 +12,7 @@ export const header = (walletConnection?: boolean) => {
                   Configs.organisation.name
                 }</a></span>
             </div>
-            <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all connect-wallet text-nowrap">
+            <button class="bg-primary text-black px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 btn-glow transition-all connect-wallet text-nowrap" wallet-connection="false">
                     Connect Wallet
                     <i class="fa-solid fa-wallet ml-2"></i>
             </button>

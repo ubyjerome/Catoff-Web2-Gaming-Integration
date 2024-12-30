@@ -14,6 +14,9 @@ module.exports = {
     './core/screens/games/components/*.ts',
     './core/screens/games/constants/*.ts',
 
+    './core/screens/createWager/*.ts',
+    './core/screens/createWager/components/*.ts',
+
     './core/public/javascript/*.ts',
   ],
   theme: {
