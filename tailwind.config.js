@@ -17,6 +17,9 @@ module.exports = {
     './core/screens/createWager/*.ts',
     './core/screens/createWager/components/*.ts',
 
+    './core/screens/joinWager/*.ts',
+    './core/screens/joinWager/components/*.ts',
+
     './core/public/javascript/*.ts',
   ],
   theme: {

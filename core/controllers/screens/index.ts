@@ -8,6 +8,7 @@ import { footer } from "../../screens/components/footer";
 import { gamesScreenContent } from "../../screens/games";
 import { demoScreenContent } from "../../screens/demo/test";
 import { createWagerScreenContent } from "../../screens/createWager";
+import { joinWagerScreenContent } from "../../screens/joinWager";
 
 
 export const homeScreen = async (req: Request, res: Response, next: NextFunction) => {
@@ -57,6 +58,25 @@ export const createWagerScreen = async (req: Request, res: Response, next: NextF
       header: await header(),
       footer: await footer(),
       content: await createWagerScreenContent(),
+    });
+    
+  } catch (error:any) {
+    logger.error(error.message)
+    console.log(error);
+  }
+};
+
+
+export const joinWagerScreen = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    res.render("index", {
+      meta: meta(req, {
+        pageTitle: `Join Wager - ${Configs.organisation.name}` || "Available Games",
+        pageDescription: Configs.project.description,
+      }),
+      header: await header(),
+      footer: await footer(),
+      content: await joinWagerScreenContent(),
     });
     
   } catch (error:any) {
