@@ -14,6 +14,8 @@ web3Router.post("/wager/join", validate(prepareToJoinWagerDTO), Web3Controller.p
 // Route to submit a signed transaction
 web3Router.post("/transaction/submit", validate(submitSignedTransactionDTO), Web3Controller.submitSignedTransaction);
 
-web3Router.post("/connect-wallet", Web3Controller.connectWallet);
+web3Router.post("/connect-wallet/prepare", Web3Controller.prepareConnectWallet);
+
+web3Router.post("/connect-wallet/confirm", Web3Controller.confirmConnectWallet);
 
 export = web3Router;

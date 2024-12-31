@@ -1,54 +1,44 @@
 import {
     toast
 } from "/javascripts/components/toast.js"
-import {
-    call
-} from "/javascripts/components/call.js"
 
+import {
+    shortenPublicKey
+} from "/javascripts/components/shortenPubKey.js"
+import { autoConnect } from "/javascripts/components/autoConnectWallet.js";
+await autoConnect();
 export function init() {}
 const walletConnectionButton = document.querySelectorAll('.connect-wallet')
 
 // Wallet Connection Simulation
 walletConnectionButton.forEach(button => {
-    button.addEventListener('click', async () => {
-
+    button.addEventListener('click', async (e) => {
+        const targetButton = e.target
+        const preservedButtonState = targetButton.innerHTML
         const walletConnection = button.getAttribute("wallet-connection")
         if (walletConnection === "true") {
             window.location.href = "/games"
             return
         }
-
         try {
+            targetButton.innerHTML = `Connecting... <i class="fa-solid fa-link ml-2"></i>`
             if (window.solana) {
                 const response = await window.solana.connect();
                 const publicKey = response.publicKey.toString();
 
-                // const connectionResponse = await sendPublicKeyToBackend(publicKey);
-                // if (!connectionResponse.status) {
-                //     toast(connectionResponse.message, "error")
-                //     return
-                // }
-                // toast(connectionResponse.message, "info")
-                
                 walletConnectionButton.forEach(button => {
                     button.setAttribute("wallet-connection", true)
-                    button.innerHTML = `Connected: 7C...3F`
+                    button.innerHTML = `Connected: ${shortenPublicKey(publicKey)} <i class="fa-brands fa-connectdevelop"></i>`
                 })
 
             } else {
+                targetButton.innerHTML = preservedButtonState
                 toast("No Solana wallet extension detected. Please install a wallet like Phantom, Sollet, or Solflare.", "error")
             }
         } catch (error) {
+            targetButton.innerHTML = preservedButtonState
             console.error('Error connecting to wallet:', error);
             toast("Failed to connect to the wallet. Please try again.", "error")
         }
     });
 });
-
-
-async function sendPublicKeyToBackend(userPublicKey) {
-    const connectionResponse = await call.json("/api/v1/web3/connect-wallet", "POST", false, {
-        userPublicKey: userPublicKey.toString()
-    });
-    return connectionResponse
-}

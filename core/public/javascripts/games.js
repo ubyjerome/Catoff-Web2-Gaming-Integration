@@ -1,4 +1,5 @@
 import {init} from "/javascripts/global.js"
+init()
 // Simulated data for active wagers
 const activeWagers = [{
         game: 'Fortnite',

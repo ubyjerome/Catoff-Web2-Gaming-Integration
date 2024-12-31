@@ -1,4 +1,5 @@
 import {init} from "/javascripts/global.js"
+init()
 
 // Hover Effects
 document.querySelectorAll('.btn-glow').forEach(button => {

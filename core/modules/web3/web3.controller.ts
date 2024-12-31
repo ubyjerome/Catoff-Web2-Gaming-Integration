@@ -1,16 +1,16 @@
 import { Request, Response, NextFunction } from "express";
 import {
-  connectWallet,
+  prepareConnectWalletTransaction,
+  confirmConnectWalletTransaction,
   prepareCreateWagerTransaction,
   prepareJoinWagerTransaction,
-  chooseWinner,
   submitSignedTransaction
 } from "./index";
 import logger from "../../utils/logger";
 import serverResponse from "../../utils/serverResponse";
 
 class Web3Controller {
-  async connectWallet(req: Request, res: Response, next: NextFunction) {
+  async prepareConnectWallet(req: Request, res: Response, next: NextFunction) {
     const { userPublicKey } = req.body;
 
     try {
@@ -28,22 +28,55 @@ class Web3Controller {
         throw new Error("Invalid Base58 Public Key");
       }
 
-      const transactionId = await connectWallet(userPublicKey);
+      const transaction = await prepareConnectWalletTransaction(userPublicKey);
 
       serverResponse.handleResponse(
         req,
         res,
-        { transactionId },
+        { transaction },
         "success",
-        "Wallet connected successfully."
+        "Wallet connection transaction prepared successfully."
       );
     } catch (error: any) {
-      logger.error(`Error connecting wallet: ${error.message}`);
+      logger.error(`Error preparing wallet connection: ${error.message}`);
       serverResponse.handleError(
         req,
         res,
         "internalServerError",
-        "Failed to connect wallet."
+        "Failed to prepare wallet connection transaction."
+      );
+    }
+  }
+
+  async confirmConnectWallet(req: Request, res: Response, next: NextFunction) {
+    const { signedTransaction } = req.body;
+
+    try {
+      if (!signedTransaction) {
+        return serverResponse.handleError(
+          req,
+          res,
+          "unauthorized",
+          "Signed transaction is required."
+        );
+      }
+
+      const result = await confirmConnectWalletTransaction(signedTransaction);
+
+      serverResponse.handleResponse(
+        req,
+        res,
+        { result },
+        "success",
+        "Wallet connected successfully."
+      );
+    } catch (error: any) {
+      logger.error(`Error confirming wallet connection: ${error.message}`);
+      serverResponse.handleError(
+        req,
+        res,
+        "internalServerError",
+        "Failed to confirm wallet connection."
       );
     }
   }
@@ -61,12 +94,12 @@ class Web3Controller {
         );
       }
 
-      const serializedTransaction = prepareCreateWagerTransaction(amount, creatorPublicKey);
+      const transaction = await prepareCreateWagerTransaction(amount, creatorPublicKey);
 
       serverResponse.handleResponse(
         req,
         res,
-        { transaction: serializedTransaction },
+        { transaction },
         "success",
         "Wager creation transaction prepared successfully."
       );
@@ -94,12 +127,12 @@ class Web3Controller {
         );
       }
 
-      const serializedTransaction = prepareJoinWagerTransaction(wagerId, participantPublicKey, amount);
+      const transaction = await prepareJoinWagerTransaction(wagerId, participantPublicKey, amount);
 
       serverResponse.handleResponse(
         req,
         res,
-        { transaction: serializedTransaction },
+        { transaction },
         "success",
         "Transaction prepared for joining wager."
       );
@@ -110,39 +143,6 @@ class Web3Controller {
         res,
         "internalServerError",
         "Failed to prepare transaction for joining wager."
-      );
-    }
-  }
-
-  async resolveWager(req: Request, res: Response, next: NextFunction) {
-    const { wagerId, winnerPublicKey } = req.body;
-
-    try {
-      if (!wagerId || !winnerPublicKey) {
-        return serverResponse.handleError(
-          req,
-          res,
-          "unauthorized",
-          "Wager ID and winner public key are required."
-        );
-      }
-
-      const transactionId = await chooseWinner(wagerId, winnerPublicKey);
-
-      serverResponse.handleResponse(
-        req,
-        res,
-        { transactionId },
-        "success",
-        "Wager resolved successfully."
-      );
-    } catch (error: any) {
-      logger.error(`Error resolving wager: ${error.message}`);
-      serverResponse.handleError(
-        req,
-        res,
-        "internalServerError",
-        "Failed to resolve wager."
       );
     }
   }

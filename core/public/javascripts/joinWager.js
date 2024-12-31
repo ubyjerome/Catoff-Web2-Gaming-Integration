@@ -1,3 +1,6 @@
+import { init } from "./global.js";
+init()
+
 // Simulated wager data
 const wagerData = {
     game: "Fortnite",
