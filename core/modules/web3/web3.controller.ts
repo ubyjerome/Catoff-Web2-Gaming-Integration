@@ -82,10 +82,10 @@ class Web3Controller {
   }
 
   async prepareToCreateWager(req: Request, res: Response, next: NextFunction) {
-    const { amount, creatorPublicKey } = req.body;
+    const { stakeAmount, creatorPublicKey } = req.body;
 
     try {
-      if (!amount || !creatorPublicKey) {
+      if (!stakeAmount || !creatorPublicKey) {
         return serverResponse.handleError(
           req,
           res,
@@ -94,7 +94,7 @@ class Web3Controller {
         );
       }
 
-      const transaction = await prepareCreateWagerTransaction(amount, creatorPublicKey);
+      const transaction = await prepareCreateWagerTransaction(stakeAmount, creatorPublicKey);
 
       serverResponse.handleResponse(
         req,

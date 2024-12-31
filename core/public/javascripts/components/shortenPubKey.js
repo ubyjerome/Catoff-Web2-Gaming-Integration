@@ -1,4 +1,4 @@
 export function shortenPublicKey(publicKey) {
-    const shortened = publicKey.slice(0, 2) + '...' + publicKey.slice(-2);
+    const shortened = publicKey.slice(0, 4) + '...' + publicKey.slice(-3);
     return shortened;
 }

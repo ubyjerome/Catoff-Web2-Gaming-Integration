@@ -28,7 +28,7 @@ walletConnectionButton.forEach(button => {
 
                 walletConnectionButton.forEach(button => {
                     button.setAttribute("wallet-connection", true)
-                    button.innerHTML = `Connected: ${shortenPublicKey(publicKey)} <i class="fa-brands fa-connectdevelop"></i>`
+                    button.innerHTML = `${shortenPublicKey(publicKey)} <i class="fa-brands fa-connectdevelop"></i>`
                 })
 
             } else {

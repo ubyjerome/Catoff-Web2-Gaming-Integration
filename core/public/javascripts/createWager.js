@@ -1,30 +1,16 @@
-import {
-    init
-} from "/javascripts/global.js";
-import {
-    toast
-} from "/javascripts/components/toast.js";
-import {
-    call
-} from "/javascripts/components/call.js";
-import {
-    signTransaction,
-    sendSignedTransaction
-} from "/javascripts/components/sign.js";
-import {
-    shortenPublicKey
-} from "/javascripts/components/shortenPubKey.js"
+import { init } from "/javascripts/global.js";
+import { toast } from "/javascripts/components/toast.js";
+import { call } from "/javascripts/components/call.js";
+import { signTransaction, sendSignedTransaction } from "/javascripts/components/sign.js";
+import { shortenPublicKey } from "/javascripts/components/shortenPubKey.js"
 
 // Use the global solanaWeb3 object
-const {
-    Transaction,
-    PublicKey
-} = window.solanaWeb3;
-
+const { Transaction, PublicKey } = window.solanaWeb3;
 
 init();
 
 const wagerForm = document.getElementById('wagerForm');
+const formSubmitBtn = document.querySelector('[type="submit"]')
 const linkInput = document.getElementById('wagerLink');
 const wagerLinkModal = document.getElementById('wagerLinkModal');
 const copyLinkButton = document.getElementById('copyLink');
@@ -39,6 +25,8 @@ wagerDurationInput.min = now.toISOString().slice(0, 16);
 
 wagerForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    let submitBtnPreserverdState = formSubmitBtn.innerHTML
+    formSubmitBtn.innerHTML = `Creating Wager...`
 
     const formData = new FormData(wagerForm);
     const wagerData = {
@@ -57,7 +45,7 @@ wagerForm.addEventListener('submit', async (e) => {
         await window.solana.connect();
         const userPublicKey = window.solana.publicKey.toString();
         walletConnectionButton.forEach(button => {
-            button.innerHTML = `Connected ${shortenPublicKey(userPublicKey)}`
+            button.innerHTML = `${shortenPublicKey(userPublicKey)} <i class="fa-brands fa-connectdevelop"></i>`
         })
         // Step 1: Prepare the transaction
         const prepareResponse = await call.json('/api/v1/web3/wager/create', "POST", false, {
@@ -70,12 +58,10 @@ wagerForm.addEventListener('submit', async (e) => {
             throw new Error('Failed to prepare transaction');
         }
 
-        const {
-            transaction: serializedTransaction
-        } = await prepareResponse.json();
+        const serializedTransaction = prepareResponse.data.transaction;
 
         // Step 2: Deserialize and sign the transaction
-        const transaction = Transaction.from(Buffer.from(serializedTransaction, 'base64'));
+        const transaction = Transaction.from(Uint8Array.from(atob(serializedTransaction), c => c.charCodeAt(0)));
         const signedTransaction = await signTransaction(transaction);
 
         // Step 3: Submit the signed transaction
@@ -90,7 +76,10 @@ wagerForm.addEventListener('submit', async (e) => {
         wagerLinkModal.classList.remove('hidden');
 
         toast("Wager created successfully!", "success");
+        formSubmitBtn.innerHTML = submitBtnPreserverdState
+        wagerForm.reset()
     } catch (error) {
+        formSubmitBtn.innerHTML = submitBtnPreserverdState
         console.error('Error creating wager:', error);
         toast(error.message || "Failed to create wager. Please try again.", "error");
     }
