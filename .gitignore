@@ -3,6 +3,7 @@ info.md
 todo.md
 ./dist
 *.trash
+./trash/.*
 *.trash.md
 logs
 *.log

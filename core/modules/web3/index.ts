@@ -92,14 +92,14 @@ export const prepareCreateWagerTransaction = async (
   const { blockhash } = await web3Connection.getLatestBlockhash();
 
   const transaction = new Transaction({
-    recentBlockhash: blockhash, // Set the recent blockhash
+    recentBlockhash: blockhash, 
     feePayer: new PublicKey(creatorPublicKey),
   }).add(
     SystemProgram.createAccount({
       fromPubkey: creator,
       newAccountPubkey: wagerAccount.publicKey,
-      lamports: await web3Connection.getMinimumBalanceForRentExemption(1000), // Adjust size as needed
-      space: 1000, // Adjust size as needed
+      lamports: await web3Connection.getMinimumBalanceForRentExemption(1000),
+      space: 1000,
       programId,
     }),
     new TransactionInstruction({
@@ -155,12 +155,23 @@ export const prepareJoinWagerTransaction = async (
 };
 
 export const submitSignedTransaction = async (
-  signedTransaction: string
+  signedTransactionData: any
 ): Promise<string> => {
-  const transactionBuffer = Buffer.from(signedTransaction, "base64");
-  const tx = await web3Connection.sendRawTransaction(transactionBuffer, {
-    skipPreflight: false,
-    preflightCommitment: "confirmed",
-  });
-  return tx;
+  try {
+    // Reconstruct the Transaction object from the plain JavaScript object
+    const reconstructedTransaction = Transaction.from(signedTransactionData.data);
+
+    // Serialize the reconstructed transaction
+    const serializedTransaction = reconstructedTransaction.serialize();
+
+    // Send the raw transaction
+    const tx = await web3Connection.sendRawTransaction(serializedTransaction, {
+      skipPreflight: false,
+      preflightCommitment: "confirmed",
+    });
+    return tx;
+  } catch (error) {
+    console.error("Error submitting transaction:", error);
+    throw error;
+  }
 };

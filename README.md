@@ -10,7 +10,7 @@ Catoff Wagerly is a peer-to-peer (P2P) wagering platform designed to connect ind
 - **User Profiles**: Track history, reputation, and performance.
 
 ## Tech Stack
-- **Frontend**: React.js
+- **Frontend**: EJS
 - **Backend**: Node.js with Express.js
 - **Database**: MongoDB
 - **Authentication**: JWT-based authentication
@@ -70,12 +70,7 @@ We welcome contributions to improve Catoff Wagerly. To contribute:
 5. Create a pull request to the main repository.
 
 ## License
-Catoff Wagerly is licensed under the [MIT License](LICENSE).
-
-## Contact
-For questions, suggestions, or support, please contact:
-- **Email**: support@catoffwagery.com
-- **Twitter**: [@CatoffWagery](https://twitter.com/CatoffWagery)
+Catoff Wagerly is licensed under the [GNU GENERAL PUBLIC LICENSE](LICENSE).
 
 ---
 Thank you for choosing Catoff Wagerly! Let's redefine the wagering experience together.

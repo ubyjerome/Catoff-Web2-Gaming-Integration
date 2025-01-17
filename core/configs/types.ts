@@ -6,6 +6,7 @@ export interface IConfigs {
     url: {
       deployment: string;
     };
+    phase?:string
   };
   mongoUrl:string,
   organisation: {

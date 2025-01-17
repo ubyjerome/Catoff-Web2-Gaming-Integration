@@ -38,9 +38,8 @@ wagerForm.addEventListener('submit', async (e) => {
     };
 
     try {
-        // Ensure wallet is connected
-        if (!window.solana || !window.solana.isPhantom) {
-            throw new Error("Phantom wallet is not connected");
+        if (!window.solana ) {
+            throw new Error("Wallet is not connected");
         }
         await window.solana.connect();
         const userPublicKey = window.solana.publicKey.toString();

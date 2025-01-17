@@ -10,6 +10,7 @@ export const Configs: IConfigs = {
     url: {
       deployment: process.env.PROJECT_DEPLOYMENT_URL || "Boiler",
     },
+    phase:process.env.PROJECT_PHASE
   },
   mongoUrl: `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@${process.env.MONGODB_URL}`,
   organisation: {

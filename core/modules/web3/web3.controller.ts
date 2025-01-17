@@ -148,19 +148,9 @@ class Web3Controller {
   }
 
   async submitSignedTransaction(req: Request, res: Response, next: NextFunction) {
-    const { signedTransaction } = req.body;
 
     try {
-      if (!signedTransaction) {
-        return serverResponse.handleError(
-          req,
-          res,
-          "unauthorized",
-          "Signed transaction is required."
-        );
-      }
-
-      const txSignature = await submitSignedTransaction(signedTransaction);
+      const txSignature = await submitSignedTransaction(req.body);
 
       serverResponse.handleResponse(
         req,
